@@ -53,4 +53,16 @@ private:
     TestRunner test_runner;
 };
 
+/* Macros */
+#define ASSERT_TRUE(condition) \
+    if (!(condition)) throw runtime_error("Assertion failed: " #condition)
+
+#define ASSERT_FALSE(condition) \
+    if ((condition)) throw runtime_error("Assertion failed: " #condition)
+
+#define TEST(testSuite, testName) \
+    void testSuite##_##testName(); \
+    bool testSuite##_##testName##_registered = TestRegistry::instance().addTest(#testSuite "_" #testName, testSuite##_##testName); \
+    void testSuite##_##testName()
+
 #endif // TEST_FRAMEWORK_H

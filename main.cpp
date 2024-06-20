@@ -1,7 +1,12 @@
 #include <iostream>
+#include <string>
+
+#include "bitboard_utils.h"
+
 using namespace std;
 
 int main() {
-    cout << "Hello world!" << endl;
+    initBoard();
+    printBB_bits(allPieces);
     return 1;
 }
